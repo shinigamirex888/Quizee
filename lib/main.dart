@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import './question.dart';
+import './answer.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -8,19 +11,19 @@ class MyApp extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
-    return MyAppState();
+    return _MyAppState();
   }
 }
 
-class MyAppState extends State<MyApp> {
-  var questionIndex = 0;
+class _MyAppState extends State<MyApp> {
+  var _questionIndex = 0;
 
-  void answerQuestion() {
+  void _answerQuestion() {
     setState(() {
-          questionIndex += 1;
-        });
+      _questionIndex += 1;
+    });
     //questionIndex += 1;
-    print(questionIndex);
+    print(_questionIndex);
   } //anonymous function be like ()=>print('Answer chosen!');
 
   @override
@@ -38,22 +41,13 @@ class MyAppState extends State<MyApp> {
         body: Column(
           children: [
             SizedBox(height: 16),
-            Text(questions[questionIndex]),
+            Question(questions[_questionIndex]),
             SizedBox(height: 16),
-            RaisedButton(
-              child: Text("Answer 1"),
-              onPressed: answerQuestion,
-            ),
+            Answer(_answerQuestion),
             SizedBox(height: 16),
-            RaisedButton(
-              child: Text("Answer 2"),
-              onPressed: answerQuestion,
-            ),
+            Answer(_answerQuestion),
             SizedBox(height: 16),
-            RaisedButton(
-              child: Text("Answer 3"),
-              onPressed: answerQuestion,
-            ),
+            Answer(_answerQuestion),
             SizedBox(height: 16),
           ],
         ),
